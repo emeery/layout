@@ -7,7 +7,8 @@ html {
     box-sizing: inherit;
 }
 body {
-    margin:0;
+    margin: 0 !important;
+    padding: 0 !important;
     background: #1FA2FF;
     background: linear-gradient(to right, #A6FFCB, #12F8DA, #1FA2FF);
     color: white;
@@ -16,7 +17,7 @@ body {
 .contenedor {
     display: grid;
     margin: 0 auto;
-    height: 100vh;
+    height: 110vh;
     background-color: teal;
 }
 .contenedor > * {
@@ -26,13 +27,28 @@ body {
 .header {
     background-color: slateblue;
     grid-area: header;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+.a img {
+    width: 75px;
+}
+.b {
+    background-color: darkorange;
+}
+.c {
+    background-color: teal;
 }
 .nav {
     background-color: tomato;
     grid-area: nav;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
 }
 .main {
-    background-color: firebrick;
+    background-color: tomato;
     grid-area: contenido;
 }
 .left {
@@ -47,16 +63,34 @@ body {
     background-color: slateblue;
     grid-area: footer;
 }
-@media screen and (min-width:768px) {
+/* Desktop */
+@media screen and (min-width:600px) {
     .contenedor {
         grid-template-areas: 
         "header header header header"
-        "left nav nav nav"
-        "left contenido contenido right"
-        "left contenido contenido right"
-        "footer footer footer right";
-        grid-template-columns: repeat(4, 25%); /* 4, */
-        grid-template-rows: 80px 80px auto auto 80px;
-        grid-gap: .5rem;
+        "left contenido contenido contenido"
+        "left contenido contenido contenido"
+        "left contenido contenido contenido"
+        "left contenido contenido contenido";
+        grid-template-columns: 30% 70%;
+        grid-template-rows: 80px auto;
+    }
+    .logo {
+        width: 10%;
+        max-width: 100%;
+    }
+}
+/* Mobile & Tablet */
+@media screen and (max-width:600px) {
+    .contenedor {
+        grid-template-areas: 
+        "header "
+        "contenido"
+        "contenido"
+        "contenido"
+        "contenido"
+        "contenido";
+        grid-template-columns: 100%;
+        grid-template-rows: 80px 100%;
     }
 }
